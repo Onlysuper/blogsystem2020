@@ -1,4 +1,4 @@
-<style scoped>
+<style lang="scss" scoped>
     .layout{
         border: 1px solid #d7dde4;
         background: #f5f7f9;
@@ -48,15 +48,21 @@
         vertical-align: middle;
         font-size: 22px;
     }
+    .head-right{
+        text-align: right;
+        .avatar-box{
+            margin-right: 10px
+        }
+    }
 </style>
 <template>
   <div id="app" class="layout">
       <Layout>
             <Sider ref="side1" hide-trigger collapsible :collapsed-width="78" v-model="isCollapsed">
-                <Menu active-name="1-2" theme="dark" width="auto" :class="menuitemClasses">
-                    <MenuItem name="1-1">
+                <Menu active-name="1-2" theme="dark" width="auto" :class="menuitemClasses" @on-select="menuSelecte">
+                    <MenuItem name="article">
                         <Icon type="ios-navigate"></Icon>
-                        <span>Option 1</span>
+                        <span>写文章</span>
                     </MenuItem>
                     <MenuItem name="1-2">
                         <Icon type="ios-search"></Icon>
@@ -70,10 +76,23 @@
             </Sider>
             <Layout>
                 <Header :style="{padding: 0}" class="layout-header-bar">
-                    <Icon @click.native="collapsedSider" :class="rotateIcon" :style="{margin: '0 20px'}" type="md-menu" size="24"></Icon>
+                    <Row>
+                        <Col span="8"><Icon @click.native="collapsedSider" :class="rotateIcon" :style="{margin: '0 20px'}" type="md-menu" size="24"></Icon></Col>
+                        <Col span="8" offset="8" class="head-right">
+                            <Dropdown trigger="click" style="margin-right: 20px">
+                                <a href="javascript:void(0)">
+                                    <Avatar class="avatar-box" src="https://i.loli.net/2017/08/21/599a521472424.jpg" />
+                                    <Icon type="ios-arrow-down"></Icon>
+                                </a>
+                                <DropdownMenu slot="list">
+                                    <DropdownItem>退出登录</DropdownItem>
+                                </DropdownMenu>
+                             </Dropdown>
+                        </Col>
+                    </Row>
                 </Header>
                 <Content :style="{margin: '20px', background: '#fff', minHeight: '260px'}">
-                    Content
+                    <router-view></router-view>
                 </Content>
             </Layout>
         </Layout>
@@ -102,6 +121,13 @@ export default class App extends Vue {
   }
   collapsedSider () {
       this.$refs.side1.toggleCollapse();
+  }
+  menuSelecte (name:any) {
+      if(name==='article'){
+          this.$router.push({
+              path:'/article'
+          })
+      }
   }
 
 }
