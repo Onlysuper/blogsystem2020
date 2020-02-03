@@ -1,6 +1,6 @@
 <template>
-  <div class="article-page">
-    我是文章
+  <div class="about-page">
+    我是关于
   </div>
 </template>
 <script>

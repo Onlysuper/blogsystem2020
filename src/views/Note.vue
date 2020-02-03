@@ -1,6 +1,6 @@
 <template>
-  <div class="article-page">
-    我是文章
+  <div class="note-page">
+    我是笔记
   </div>
 </template>
 <script>
