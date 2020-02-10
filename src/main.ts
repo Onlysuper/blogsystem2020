@@ -4,7 +4,7 @@ import router from './router';
 import store from './store';
 // import ViewUI from 'view-design';
 import 'view-design/dist/styles/iview.css';
-import { Row,Col,Button, Table,Layout,Header,Footer,Menu,MenuItem,Sider,Avatar,Icon,Dropdown,DropdownMenu,DropdownItem } from 'view-design';
+import { Row,Col,Button, Table,Layout,Header,Footer,Menu,MenuItem,Sider,Avatar,Icon,Dropdown,DropdownMenu,DropdownItem,Form,FormItem,Input } from 'view-design';
 Vue.component('Row', Row);
 Vue.component('Col', Col);
 Vue.component('Button', Button);
@@ -20,6 +20,9 @@ Vue.component('Icon', Icon);
 Vue.component('Dropdown', Dropdown);
 Vue.component('DropdownMenu', DropdownMenu);
 Vue.component('DropdownItem', DropdownItem);
+Vue.component('Form', Form);
+Vue.component('FormItem', FormItem);
+Vue.component('Input', Input);
 
 Vue.config.productionTip = false;
 
