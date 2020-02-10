@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Layout from '../views/Layout.vue';
+import MainLayout from '../views/MainLayout.vue';
 
 Vue.use(VueRouter);
 
@@ -8,27 +8,39 @@ const routes = [
   {
     path: '/',
     name: 'layout',
-    component: Layout,
+    component: MainLayout
   },
   {
-    path: '/article',
-    name: 'article',
-    component: () => import(/* webpackChunkName: "article" */ '../views/Article.vue'),
-  },
-  {
-    path: '/note',
-    name: 'note',
-    component: () => import(/* webpackChunkName: "note" */ '../views/Note.vue'),
-  },
-  {
-    path: '/about',
-    name: 'about',
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
-  },
+    path: '/layout',
+    name: 'layout',
+    component: MainLayout,
+    children: [
+      {
+        path: '/article',
+        name: 'article',
+        component: () => import(/* webpackChunkName: "article" */ '../views/Article.vue'),
+      },
+      {
+        path: '/note',
+        name: 'note',
+        component: () => import(/* webpackChunkName: "note" */ '../views/Note.vue'),
+      },
+      {
+        path: '/about',
+        name: 'about',
+        component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
+      },
+      {
+        path: '/login',
+        name: 'login',
+        component: () => import(/* webpackChunkName: "login" */ '../views/Login.vue'),
+      }
+    ]
+  }
 ];
 
 const router = new VueRouter({
-  mode: 'history',
+  mode: 'hash',
   base: process.env.BASE_URL,
   routes,
 });
